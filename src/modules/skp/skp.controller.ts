@@ -10,7 +10,6 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { SkpService } from './skp.service';
-import { UpdateSkpDto } from './dto/update-skp.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { FileUploadInterceptor } from '../../upload/upload.service';
 
@@ -37,8 +36,8 @@ export class SkpController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSkpDto?: UpdateSkpDto) {
-    return this.skpService.updateSkp(+id, updateSkpDto);
+  update(@Param('id') id: string, @Body() request: any) {
+    return this.skpService.updateSkp(+id, request);
   }
 
   @Delete(':id')
